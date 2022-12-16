@@ -28,16 +28,16 @@ public class LoginTest {
 
     @Test
     public void wrongPassword() {
-        driver.get(constant.baseUrl);
-        page.login(constant.userName, constant.wrongPassword);
-        Assert.assertEquals(constant.errorMessage, page.getCurrentErrorMessage());
+        driver.get(constant.BASE_URL);
+        page.login(constant.USER_NAME, constant.WRONG_PASSWORD);
+        Assert.assertEquals(constant.ERROR_MESSAGE, page.getCurrentErrorMessage());
     }
 
     @Test
     public void successfulLogin() {
-        driver.get(constant.baseUrl);
-        page.login(constant.userName, constant.password);
+        driver.get(constant.BASE_URL);
+        page.login(constant.USER_NAME, constant.PASSWORD);
 
-        Assert.assertEquals(constant.titleText, page.landingText());
+        Assert.assertEquals(constant.TITLE_TEXT, page.landingText());
     }
 }
