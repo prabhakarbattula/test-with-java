@@ -32,4 +32,12 @@ public class LoginTest {
         page.login(constant.userName, constant.wrongPassword);
         Assert.assertEquals(constant.errorMessage, page.getCurrentErrorMessage());
     }
+
+    @Test
+    public void successfulLogin() {
+        driver.get(constant.baseUrl);
+        page.login(constant.userName, constant.password);
+
+        Assert.assertEquals(constant.titleText, page.landingText());
+    }
 }
