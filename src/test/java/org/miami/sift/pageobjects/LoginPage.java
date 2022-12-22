@@ -1,7 +1,5 @@
 package org.miami.sift.pageobjects;
 
-import org.miami.sift.constants.SelectorConstants;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +9,10 @@ public class LoginPage {
     private static final String USER_NAME = "//*[(@id = \"user-name\")]";
     private static final String PASSWORD = "//*[(@id = \"password\")]";
     private static final String LOGIN_BUTTON = "//*[(@id = \"login-button\")]";
+    private static final String ERROR_HEADER = "//h3";
+
+    private static final String TITLE = ".title";
+
     @FindBy(xpath = USER_NAME)
     private WebElement userName;
 
@@ -18,6 +20,12 @@ public class LoginPage {
     private WebElement password;
     @FindBy(xpath = LOGIN_BUTTON)
     private WebElement loginButton;
+
+    @FindBy(xpath = ERROR_HEADER)
+    private WebElement errorHeader;
+
+    @FindBy(css= TITLE)
+    private WebElement titleName;
 
     private WebDriver driver;
 
@@ -33,6 +41,10 @@ public class LoginPage {
     }
 
     public String getCurrentErrorMessage() {
-        return driver.findElement(By.xpath(SelectorConstants.ERROR_HEADER)).getText();
+        return this.errorHeader.getText();
+    }
+
+    public String landingText() {
+        return this.titleName.getText();
     }
 }
